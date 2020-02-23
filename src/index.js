@@ -10,6 +10,8 @@ const reducer = function(state = 0, action) {
             return state = 0
         case 'UPL':
             return state + action.value
+        case 'UPL':
+            return state + action.value
         default:
             return state
     }
@@ -35,6 +37,21 @@ document.querySelector('.upload_block_item').addEventListener('click', () => {
         let value = Number(itemConst[rnd])
         store.dispatch({type: 'UPL', value})
     })
+})
+document.querySelector('.download_block').addEventListener('click', () => {
+    console.log(store.getState())
+    let num = store.getState();
+    let data = {"const": num}
+    fetch('http://localhost:3001/numbers', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((response) => response.json())
+    .then((jsonNumber) => jsonNumber)
+    store.dispatch({type: 'LOA'})
 })
 const update = () => {
     document.querySelector('.counter').textContent = store.getState();
