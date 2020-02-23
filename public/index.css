@@ -77,3 +77,33 @@
     top: 12px;
     right: 4px;
 }
+.download_block {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: #30D9CF;
+    border-radius: 4px;
+    cursor: pointer;
+    top: 622px;
+    right: 730px;
+}
+.download_block img {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+.upload_block {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: #9B0F9E;
+    border-radius: 4px;
+    cursor: pointer;
+    top: 622px;
+    right: 624px;
+}
+.upload_block img {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}

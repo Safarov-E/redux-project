@@ -8,6 +8,8 @@ const reducer = function(state = 0, action) {
             return state - 1
         case 'RES':
             return state = 0
+        case 'UPL':
+            return state + action.value
         default:
             return state
     }
@@ -21,6 +23,18 @@ document.querySelector('.minus_block_item').addEventListener('click', () => {
 })
 document.querySelector('.reset_block_item').addEventListener('click', () => {
     store.dispatch({type: 'RES'})
+})
+document.querySelector('.upload_block_item').addEventListener('click', () => {
+    fetch('http://localhost:3001/numbers')
+    .then((response) => response.json())
+    .then((jsonNumber) => {
+        let itemConst = jsonNumber.map(item => {
+            return  item.const
+        })
+        let rnd = Math.floor(Math.random() * itemConst.length)
+        let value = Number(itemConst[rnd])
+        store.dispatch({type: 'UPL', value})
+    })
 })
 const update = () => {
     document.querySelector('.counter').textContent = store.getState();
